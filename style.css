@@ -1,29 +1,45 @@
-.wrapper {
-  width: 600px;
-  height: 800px;
-  margin: 0 auto;
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-.card {
-  display: inline-block;
-  width: 140px;
-  height: 200px;
+body {
+  display: flex;
+  height: 100vh;
+  /* width: 100vw; */
+  background: lightblue;
+}
+.memory-game {
+  margin: auto;
+  width: 640px;
+  height: 640px;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
   position: relative;
   transition: 0.5s;
   transform-style: preserve-3d;
+  transform: scale(1);
 }
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  backface-visibility: hidden;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.back {
+.memory-card.flip {
   transform: rotateY(180deg);
 }
-.turn {
+.memory-card:active {
+  transform: scale(0.97);
+  transition: 0.2s;
+}
+.back-face, .front-face {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  position: absolute;
+}
+.front-face {
   transform: rotateY(180deg);
 }
